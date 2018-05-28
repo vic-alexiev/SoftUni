@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. HeroesSelection", "04. HeroesSelection\04. HeroesSelection.csproj", "{825DAE8B-ABDC-49CB-A5DB-BDF9C9979BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. TheGreatSamuraiBattle", "03. TheGreatSamuraiBattle\03. TheGreatSamuraiBattle.csproj", "{C290A000-FA46-4821-B12D-6F6CD3CCFDF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. SurvivalMessage", "02. SurvivalMessage\02. SurvivalMessage.csproj", "{36059D74-95BA-498E-9421-0618D42001FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. DragonsHatching", "01. DragonsHatching\01. DragonsHatching.csproj", "{C7D86652-13F2-4D7F-B1AA-358966C96482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2CB4247E-548D-49CA-9FBA-D030D437AFAA}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\01. Dragons Hatching_Problem Description (DOCX).docx = SolutionItems\01. Dragons Hatching_Problem Description (DOCX).docx
+		SolutionItems\02. Survival Message _Problem Description (DOCX).docx = SolutionItems\02. Survival Message _Problem Description (DOCX).docx
+		SolutionItems\03. The Great Samurai Battle _Problem Description (DOCX).docx = SolutionItems\03. The Great Samurai Battle _Problem Description (DOCX).docx
+		SolutionItems\04. Heroes Selection _Problem Description (DOCX).docx = SolutionItems\04. Heroes Selection _Problem Description (DOCX).docx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{825DAE8B-ABDC-49CB-A5DB-BDF9C9979BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825DAE8B-ABDC-49CB-A5DB-BDF9C9979BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825DAE8B-ABDC-49CB-A5DB-BDF9C9979BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825DAE8B-ABDC-49CB-A5DB-BDF9C9979BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C290A000-FA46-4821-B12D-6F6CD3CCFDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C290A000-FA46-4821-B12D-6F6CD3CCFDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C290A000-FA46-4821-B12D-6F6CD3CCFDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C290A000-FA46-4821-B12D-6F6CD3CCFDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36059D74-95BA-498E-9421-0618D42001FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36059D74-95BA-498E-9421-0618D42001FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36059D74-95BA-498E-9421-0618D42001FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36059D74-95BA-498E-9421-0618D42001FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D86652-13F2-4D7F-B1AA-358966C96482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D86652-13F2-4D7F-B1AA-358966C96482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D86652-13F2-4D7F-B1AA-358966C96482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D86652-13F2-4D7F-B1AA-358966C96482}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9E7EDB4-F3CF-42A9-AC59-CD70C766F5D8}
+	EndGlobalSection
+EndGlobal
