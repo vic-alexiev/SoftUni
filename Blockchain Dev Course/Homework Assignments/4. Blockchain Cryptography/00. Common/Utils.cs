@@ -16,5 +16,25 @@ namespace Common
                 .Replace("-", string.Empty)
                 .ToLower();
         }
+
+        public static byte[] GetHexStringBytes(string hexValue)
+        {
+            int bytesCount = hexValue.Length / 2;
+            byte[] bytes = new byte[bytesCount];
+            string hex;
+            int j = 0;
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hex = new String(new Char[] { hexValue[j], hexValue[j + 1] });
+                bytes[i] = HexToByte(hex);
+                j = j + 2;
+            }
+            return bytes;
+        }
+
+        private static byte HexToByte(string hex)
+        {
+            return byte.Parse(hex, System.Globalization.NumberStyles.HexNumber);
+        }
     }
 }

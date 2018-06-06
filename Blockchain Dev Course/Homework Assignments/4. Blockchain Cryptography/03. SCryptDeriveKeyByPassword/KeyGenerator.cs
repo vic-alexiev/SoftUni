@@ -1,7 +1,5 @@
 ﻿using Common;
-using Org.BouncyCastle.Crypto.Generators;
 using System;
-using System.Security.Cryptography;
 
 namespace SCryptDeriveKeyByPassword
 {
@@ -9,35 +7,22 @@ namespace SCryptDeriveKeyByPassword
     {
         static void Main(string[] args)
         {
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                string passphrase = "p@$$w0rd~3";
-                int saltBitLength = 256;
-                byte[] salt = new byte[saltBitLength / 8];
-                rng.GetBytes(salt);
+            //byte[] salt = EncryptionUtils.GetRandomBytes(256 / 8);
+            byte[] salt = Utils.GetHexStringBytes(
+                "7b07a2977a473e84fc30d463a2333bcfea6cb3400b16bec4e17fe981c925ba4f");
 
-                Console.WriteLine("scrypt key:{0}{1}",
-                    Environment.NewLine,
-                    GenerateKey(passphrase, salt, 16384, 16, 1, 256));
-            }
-        }
-
-        private static string GenerateKey(
-            string passphrase,
-            byte[] salt,
-            int cost,
-            int blockSize,
-            int parallelization,
-            int desiredKeyBitLength)
-        {
-            byte[] data = SCrypt.Generate(
-                Utils.GetBytes(passphrase),
+            byte[] scryptKey = EncryptionUtils.GenerateSCryptKey(
+                Utils.GetBytes("p@$$w0rd~3"),
                 salt,
-                cost,
-                blockSize,
-                parallelization,
-                desiredKeyBitLength / 8);
-            return Utils.ToString(data);
+                16384,
+                16,
+                1,
+                256);
+
+            Console.WriteLine("salt:{0}{1}{0}scrypt key:{0}{2}",
+                Environment.NewLine,
+                Utils.ToString(salt),
+                Utils.ToString(scryptKey));
         }
     }
 }

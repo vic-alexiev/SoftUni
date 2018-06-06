@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00. Common", "00. Common\00
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. SCryptDeriveKeyByPassword", "03. SCryptDeriveKeyByPassword\03. SCryptDeriveKeyByPassword.csproj", "{2992A650-ADD6-420B-A336-378648F2CA83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. SymmetricEncryptionAndDecryption", "04. SymmetricEncryptionAndDecryption\04. SymmetricEncryptionAndDecryption.csproj", "{FBA6FE17-1199-447F-AB42-865656F404B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2992A650-ADD6-420B-A336-378648F2CA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2992A650-ADD6-420B-A336-378648F2CA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2992A650-ADD6-420B-A336-378648F2CA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA6FE17-1199-447F-AB42-865656F404B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA6FE17-1199-447F-AB42-865656F404B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA6FE17-1199-447F-AB42-865656F404B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA6FE17-1199-447F-AB42-865656F404B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
