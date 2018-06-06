@@ -44,17 +44,18 @@ namespace Common
             return cipher;
         }
 
-        public static string BlockCipherEncrypt(
+        public static byte[] BlockCipherProcessMessage(
             IBufferedCipher cipher,
+            bool forEncryption,
             byte[] message,
             byte[] key,
             byte[] iv = null)
         {
-            cipher.Init(true, new ParametersWithIV(
+            cipher.Init(forEncryption, new ParametersWithIV(
                 new KeyParameter(key),
                 iv ?? GetRandomBytes(cipher.GetBlockSize())));
             byte[] result = cipher.DoFinal(message);
-            return Utils.ToString(result);
+            return result;
         }
     }
 }

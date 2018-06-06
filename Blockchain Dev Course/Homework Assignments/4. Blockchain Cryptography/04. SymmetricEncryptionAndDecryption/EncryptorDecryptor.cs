@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Org.BouncyCastle.Crypto;
 using System;
+using System.Text;
 
 namespace SymmetricEncryptionAndDecryption
 {
@@ -45,8 +46,9 @@ namespace SymmetricEncryptionAndDecryption
             byte[] iv = Utils.GetHexStringBytes(
                 "433e0d8557a800a40c1d3b54f6636ff5");
 
-            string twofishEncryptedMessage = EncryptionUtils.BlockCipherEncrypt(
+            byte[] twofishEncryptedMessage = EncryptionUtils.BlockCipherProcessMessage(
                 twofishCipher,
+                true,
                 message,
                 encryptionKey,
                 iv);
@@ -62,6 +64,15 @@ namespace SymmetricEncryptionAndDecryption
                 iv,
                 twofishEncryptedMessage,
                 hmacHashedMessage);
+
+            byte[] twofishDecryptedMessage = EncryptionUtils.BlockCipherProcessMessage(
+                twofishCipher,
+                false,
+                twofishEncryptedMessage,
+                encryptionKey,
+                iv);
+
+            Console.WriteLine("Decrypted message: " + Encoding.UTF8.GetString(twofishDecryptedMessage));
         }
 
         private static void PrintEncryptionResult(
@@ -71,7 +82,7 @@ namespace SymmetricEncryptionAndDecryption
             int scryptParallelization,
             int scryptDesiredKeyBitLength,
             byte[] iv,
-            string twofishEncryptedMessage,
+            byte[] twofishEncryptedMessage,
             string hmacHashedMessage)
         {
             EncryptionResult result = new EncryptionResult
@@ -84,7 +95,7 @@ namespace SymmetricEncryptionAndDecryption
                     R = scryptBlockSize,
                     P = scryptParallelization
                 },
-                Twofish = twofishEncryptedMessage,
+                Twofish = Utils.ToString(twofishEncryptedMessage),
                 IV = Utils.ToString(iv),
                 Mac = hmacHashedMessage
             };
