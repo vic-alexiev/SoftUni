@@ -1,0 +1,7 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "bitcoinjs-lib": "^3.3.2"
+  }
+}

@@ -30,10 +30,6 @@ namespace BitcoinAddressGenerator
             byte[] step4_prepend_byte = ArrayUtils.ConcatArrays(new byte[1], step3_RIPEMD160);
             Console.WriteLine("4. [0x00] + RIPEMD160(SHA256(public_key)):\r\n" + step4_prepend_byte.ToHex());
 
-            // includes steps 5 to 9, final step
-            //string step4a_Base58Check_encode = Base58CheckEncoding.Encode(step4_prepend_byte);
-            //Console.WriteLine("4.a. Base58CheckEncode(BTC_address):\r\n" + step4a_Base58Check_encode);
-
             byte[] step5_SHA256 = HashUtils.ComputeSha256(step4_prepend_byte);
             Console.WriteLine("5. SHA256([0x00] + RIPEMD160(SHA256(public_key))):\r\n" + step5_SHA256.ToHex());
 

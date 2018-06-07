@@ -21,6 +21,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. EthereumSignatureVerifi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. BitcoinAddressGenerator", "08. BitcoinAddressGenerator\08. BitcoinAddressGenerator.csproj", "{ABE24FA6-90BC-4CAF-B24B-9EFC1D369B28}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. BitcoinAddressGeneratorJS", "09. BitcoinAddressGeneratorJS", "{F5DBC1AC-DCC9-47E3-AB32-CFAC13C34C52}"
+	ProjectSection(SolutionItems) = preProject
+		09. BitcoinAddressGeneratorJS\.gitignore = 09. BitcoinAddressGeneratorJS\.gitignore
+		09. BitcoinAddressGeneratorJS\bitcoin-address-generator.js = 09. BitcoinAddressGeneratorJS\bitcoin-address-generator.js
+		09. BitcoinAddressGeneratorJS\package-lock.json = 09. BitcoinAddressGeneratorJS\package-lock.json
+		09. BitcoinAddressGeneratorJS\package.json = 09. BitcoinAddressGeneratorJS\package.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. PrivateKeyToBitcoinAddress", "10. PrivateKeyToBitcoinAddress\10. PrivateKeyToBitcoinAddress.csproj", "{4A4EEEC0-76E2-4BC5-A44E-DB5351193D51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +73,10 @@ Global
 		{ABE24FA6-90BC-4CAF-B24B-9EFC1D369B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE24FA6-90BC-4CAF-B24B-9EFC1D369B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE24FA6-90BC-4CAF-B24B-9EFC1D369B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4EEEC0-76E2-4BC5-A44E-DB5351193D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4EEEC0-76E2-4BC5-A44E-DB5351193D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4EEEC0-76E2-4BC5-A44E-DB5351193D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4EEEC0-76E2-4BC5-A44E-DB5351193D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
