@@ -26,7 +26,7 @@ namespace EthereumSignatureCreator
                 S = signature.S.ToHex(true)
             };
 
-            Console.WriteLine(Utils.JsonSerialize(result));
+            Console.WriteLine(JsonUtils.Serialize(result));
         }
 
         private static string ToString(EthECDSASignature signature)

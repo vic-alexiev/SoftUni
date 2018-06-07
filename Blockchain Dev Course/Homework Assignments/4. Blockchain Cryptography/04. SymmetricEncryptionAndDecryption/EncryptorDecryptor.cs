@@ -51,7 +51,8 @@ namespace SymmetricEncryptionAndDecryption
                 encryptionKey,
                 iv);
 
-            string hmacHashedMessage = HashUtils.ComputeHmac("HMACSHA256", message, hmacKey);
+            string hmacHashedMessage = 
+                HashUtils.ComputeHmac("HMACSHA256", message, hmacKey).ToHex();
 
             string outputJson = GetEncryptionResultJson(
                 scryptSalt,
@@ -99,7 +100,7 @@ namespace SymmetricEncryptionAndDecryption
                 Mac = hmacHashedMessage
             };
 
-            return Utils.JsonSerialize(result);
+            return JsonUtils.Serialize(result);
         }
     }
 }

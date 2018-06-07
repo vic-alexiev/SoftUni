@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
+﻿using System;
 using System.Text;
 
 namespace Common
@@ -22,19 +20,6 @@ namespace Common
         public static string ToUTF8String(byte[] value)
         {
             return Encoding.UTF8.GetString(value);
-        }
-
-        public static string JsonSerialize(object value)
-        {
-            string output = JsonConvert.SerializeObject(
-                value,
-                Formatting.Indented,
-                new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                });
-
-            return output;
         }
     }
 }
