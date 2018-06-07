@@ -1,9 +1,9 @@
 ﻿using Common;
+using Nethereum.Hex.HexConvertors.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Org.BouncyCastle.Crypto;
 using System;
-using System.Text;
 
 namespace SymmetricEncryptionAndDecryption
 {
@@ -15,8 +15,7 @@ namespace SymmetricEncryptionAndDecryption
             byte[] message = Utils.GetBytes("exercise-cryptography");
 
             //byte[] scryptSalt = EncryptionUtils.GetRandomBytes(256 / 8);
-            byte[] scryptSalt = Utils.GetHexStringBytes(
-                "7b07a2977a473e84fc30d463a2333bcfea6cb3400b16bec4e17fe981c925ba4f");
+            byte[] scryptSalt = "7b07a2977a473e84fc30d463a2333bcfea6cb3400b16bec4e17fe981c925ba4f".HexToByteArray();
             int scryptCost = 16384;
             int scryptBlockSize = 16;
             int scryptParallelization = 1;
@@ -43,8 +42,7 @@ namespace SymmetricEncryptionAndDecryption
             BufferedBlockCipher twofishCipher = EncryptionUtils.GetTwofishCipher();
             int cipherBlockSize = twofishCipher.GetBlockSize();
             //byte[] iv = EncryptionUtils.GetRandomBytes(cipherBlockSize);
-            byte[] iv = Utils.GetHexStringBytes(
-                "433e0d8557a800a40c1d3b54f6636ff5");
+            byte[] iv = "433e0d8557a800a40c1d3b54f6636ff5".HexToByteArray();
 
             byte[] twofishEncryptedMessage = EncryptionUtils.BlockCipherProcessMessage(
                 twofishCipher,
@@ -55,7 +53,7 @@ namespace SymmetricEncryptionAndDecryption
 
             string hmacHashedMessage = HashUtils.ComputeHmac("HMACSHA256", message, hmacKey);
 
-            PrintEncryptionResult(
+            string outputJson = GetEncryptionResultJson(
                 scryptSalt,
                 scryptCost,
                 scryptBlockSize,
@@ -64,6 +62,7 @@ namespace SymmetricEncryptionAndDecryption
                 iv,
                 twofishEncryptedMessage,
                 hmacHashedMessage);
+            Console.WriteLine(outputJson);
 
             byte[] twofishDecryptedMessage = EncryptionUtils.BlockCipherProcessMessage(
                 twofishCipher,
@@ -72,10 +71,10 @@ namespace SymmetricEncryptionAndDecryption
                 encryptionKey,
                 iv);
 
-            Console.WriteLine("Decrypted message: " + Encoding.UTF8.GetString(twofishDecryptedMessage));
+            Console.WriteLine("Decrypted message: {0}", Utils.ToUTF8String(twofishDecryptedMessage));
         }
 
-        private static void PrintEncryptionResult(
+        private static string GetEncryptionResultJson(
             byte[] scryptSalt,
             int scryptCost,
             int scryptBlockSize,
@@ -100,15 +99,7 @@ namespace SymmetricEncryptionAndDecryption
                 Mac = hmacHashedMessage
             };
 
-            string output = JsonConvert.SerializeObject(
-                result,
-                Formatting.Indented,
-                new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                });
-
-            Console.WriteLine(output);
+            return Utils.JsonSerialize(result);
         }
     }
 }

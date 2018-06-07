@@ -1,5 +1,6 @@
 ﻿using Common;
 using System;
+using Nethereum.Hex.HexConvertors.Extensions;
 
 namespace SCryptDeriveKeyByPassword
 {
@@ -8,8 +9,8 @@ namespace SCryptDeriveKeyByPassword
         static void Main(string[] args)
         {
             //byte[] salt = EncryptionUtils.GetRandomBytes(256 / 8);
-            byte[] salt = Utils.GetHexStringBytes(
-                "7b07a2977a473e84fc30d463a2333bcfea6cb3400b16bec4e17fe981c925ba4f");
+            byte[] salt = 
+                "7b07a2977a473e84fc30d463a2333bcfea6cb3400b16bec4e17fe981c925ba4f".HexToByteArray();
 
             byte[] scryptKey = EncryptionUtils.GenerateSCryptKey(
                 Utils.GetBytes("p@$$w0rd~3"),

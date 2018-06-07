@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System;
 using System.Text;
 
 namespace Common
@@ -17,24 +19,22 @@ namespace Common
                 .ToLower();
         }
 
-        public static byte[] GetHexStringBytes(string hexValue)
+        public static string ToUTF8String(byte[] value)
         {
-            int bytesCount = hexValue.Length / 2;
-            byte[] bytes = new byte[bytesCount];
-            string hex;
-            int j = 0;
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                hex = new String(new Char[] { hexValue[j], hexValue[j + 1] });
-                bytes[i] = HexToByte(hex);
-                j = j + 2;
-            }
-            return bytes;
+            return Encoding.UTF8.GetString(value);
         }
 
-        private static byte HexToByte(string hex)
+        public static string JsonSerialize(object value)
         {
-            return byte.Parse(hex, System.Globalization.NumberStyles.HexNumber);
+            string output = JsonConvert.SerializeObject(
+                value,
+                Formatting.Indented,
+                new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                });
+
+            return output;
         }
     }
 }

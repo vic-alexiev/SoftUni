@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. SCryptDeriveKeyByPasswo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. SymmetricEncryptionAndDecryption", "04. SymmetricEncryptionAndDecryption\04. SymmetricEncryptionAndDecryption.csproj", "{FBA6FE17-1199-447F-AB42-865656F404B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. EthereumSignatureCreator", "05. EthereumSignatureCreator\05. EthereumSignatureCreator.csproj", "{2F74691F-67BD-4684-AF86-5CCAB80CDAF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. EthereumSignatureToAddress", "06. EthereumSignatureToAddress\06. EthereumSignatureToAddress.csproj", "{EDB00608-9BA4-488A-A446-7A2B857EAB0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. EthereumSignatureVerifier", "07. EthereumSignatureVerifier\07. EthereumSignatureVerifier.csproj", "{2FCFFF1A-0779-4E23-8A12-3B57C59313C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{FBA6FE17-1199-447F-AB42-865656F404B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA6FE17-1199-447F-AB42-865656F404B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA6FE17-1199-447F-AB42-865656F404B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F74691F-67BD-4684-AF86-5CCAB80CDAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F74691F-67BD-4684-AF86-5CCAB80CDAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F74691F-67BD-4684-AF86-5CCAB80CDAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F74691F-67BD-4684-AF86-5CCAB80CDAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDB00608-9BA4-488A-A446-7A2B857EAB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDB00608-9BA4-488A-A446-7A2B857EAB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDB00608-9BA4-488A-A446-7A2B857EAB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDB00608-9BA4-488A-A446-7A2B857EAB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCFFF1A-0779-4E23-8A12-3B57C59313C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCFFF1A-0779-4E23-8A12-3B57C59313C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCFFF1A-0779-4E23-8A12-3B57C59313C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCFFF1A-0779-4E23-8A12-3B57C59313C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
