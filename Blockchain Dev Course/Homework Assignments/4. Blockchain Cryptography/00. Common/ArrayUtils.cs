@@ -20,10 +20,5 @@ namespace Common
 
             return result;
         }
-
-        public static T[] SubArray<T>(T[] arr, int start)
-        {
-            return SubArray(arr, start, arr.Length - start);
-        }
     }
 }
