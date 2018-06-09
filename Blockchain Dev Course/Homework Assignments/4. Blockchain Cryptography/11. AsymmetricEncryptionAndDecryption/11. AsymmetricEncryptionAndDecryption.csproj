@@ -74,9 +74,13 @@
   <ItemGroup>
     <Compile Include="EncryptorDecryptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receiver.cs" />
+    <Compile Include="Sender.cs" />
+    <Compile Include="TransferData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TransferData.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\00. Common\00. Common.csproj">

@@ -2,7 +2,7 @@
 {
     internal class EthereumSignature
     {
-        public string Hash { get; set; }
+        public string Message { get; set; }
 
         public string Signature { get; set; }
 

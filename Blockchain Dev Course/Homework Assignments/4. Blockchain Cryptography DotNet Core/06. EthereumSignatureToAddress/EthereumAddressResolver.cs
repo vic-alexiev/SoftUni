@@ -1,5 +1,7 @@
-﻿using Nethereum.Hex.HexConvertors.Extensions;
+﻿using Common;
+using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Signer;
+using Nethereum.Util;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -12,7 +14,8 @@ namespace EthereumSignatureToAddress
         {
             string input = File.ReadAllText("../../../Input.json");
             EthereumSignature inputSignature = JsonConvert.DeserializeObject<EthereumSignature>(input);
-            byte[] messageHash = inputSignature.Hash.HexToByteArray();
+            byte[] messageBytes = Utils.GetBytes(inputSignature.Message);
+            byte[] messageHash = new Sha3Keccack().CalculateHash(messageBytes);
             int recId = inputSignature.V.HexToByteArray()[0];
 
             EthECDSASignature signature = EthECDSASignatureFactory.FromComponents(

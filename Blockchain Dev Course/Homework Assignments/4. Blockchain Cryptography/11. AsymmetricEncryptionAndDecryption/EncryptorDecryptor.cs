@@ -1,8 +1,7 @@
 ﻿using Common;
-using NBitcoin;
-using Nethereum.KeyStore.Crypto;
-using Nethereum.Signer;
-using System;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.Security;
 
 namespace AsymmetricEncryptionAndDecryption
 {
@@ -10,27 +9,11 @@ namespace AsymmetricEncryptionAndDecryption
     {
         private static void Main(string[] args)
         {
-            string message = "exercise-cryptography";
+            AsymmetricCipherKeyPair rsaKeyPair = EncryptionUtils.GenerateRsaKeyPair(
+                BigInteger.ValueOf(0x11), new SecureRandom(), 768, 25);
 
-            // 1. using Nethereum
-            AesEncryptDecrypt(message, EthECKey.GenerateKey().GetPubKeyNoPrefix());
-
-            // 2. Using NBitcoin
-            Key privateKey = new Key(EncryptionUtils.GetRandomBytes(32));
-            PubKey secret = privateKey.PubKey.GetSharedPubkey(privateKey);
-            AesEncryptDecrypt(message, secret.ToBytes());
-        }
-
-        private static void AesEncryptDecrypt(string message, byte[] secret)
-        {
-            byte[] iv = EncryptionUtils.GetRandomBytes(16);
-            byte[] sharedSecret = HashUtils.ComputeHmac("HMACSHA256", secret, EncryptionUtils.GetRandomBytes(32));
-
-            KeyStoreCrypto keyStoreCrypto = new KeyStoreCrypto();
-            byte[] encryptedMessage = keyStoreCrypto.GenerateAesCtrCipher(iv, sharedSecret, Common.Utils.GetBytes(message));
-
-            byte[] decryptedMessage = keyStoreCrypto.GenerateAesCtrDeCipher(iv, sharedSecret, encryptedMessage);
-            Console.WriteLine("Decrytped message: " + Common.Utils.ToUTF8String(decryptedMessage));
+            Sender.SendMessage("exercise-cryptography", rsaKeyPair.Public);
+            Receiver.ReceiveMessage(rsaKeyPair.Private);
         }
     }
 }
