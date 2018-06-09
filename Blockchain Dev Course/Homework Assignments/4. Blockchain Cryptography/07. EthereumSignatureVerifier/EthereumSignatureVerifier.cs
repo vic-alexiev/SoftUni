@@ -2,7 +2,9 @@
 using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Signer;
 using Nethereum.Util;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 
 namespace EthereumSignatureVerifier
 {
@@ -10,35 +12,25 @@ namespace EthereumSignatureVerifier
     {
         private static void Main(string[] args)
         {
-            //EthECKey privateKey = EthECKey.GenerateKey();
-            EthECKey privateKey = new EthECKey("97ddae0f3a25b92268175400149d65d6887b9cefaf28ea2c078e05cdc15a3c0a");
-            string publicAddress = privateKey.GetPublicAddress();
-            string message = "exercise-cryptography";
+            string input = File.ReadAllText("../../Input.json");
+            EthereumSignature inputSignature = JsonConvert.DeserializeObject<EthereumSignature>(input);
+            string message = inputSignature.Message;
             byte[] messageBytes = Utils.GetBytes(message);
             byte[] messageHash = new Sha3Keccack().CalculateHash(messageBytes);
+            int recId = inputSignature.V.HexToByteArray()[0];
 
-            //EthECDSASignature validSignature = privateKey.SignAndCalculateV(messageHash);
-            EthECDSASignature validSignature = EthECDSASignatureFactory.FromComponents(
-                "acd0acd4eabd1bec05393b33b4018fa38b69eba8f16ac3d60eec9f4d2abc127e".HexToByteArray(),
-                "3c92939e680b91b094242af80fce6f217a34197a69d35edaf616cb0c3da4265b".HexToByteArray(),
-                28);
+            EthECDSASignature signature = EthECDSASignatureFactory.FromComponents(
+                inputSignature.R.HexToByteArray(),
+                inputSignature.S.HexToByteArray());
 
-            //EthECKey publicKey = new EthECKey(privateKey.GetPubKey(), false);
-            EthECKey publicKey = EthECKey.RecoverFromSignature(validSignature, messageHash);
+            EthECKey publicKey = EthECKey.RecoverFromSignature(signature, recId, messageHash);
 
-            VerifySignatureAndPrintResult(messageHash, publicKey, validSignature);
-
-            EthECDSASignature invalidSignature = EthECDSASignatureFactory.FromComponents(
-                "5550acd4eabd1bec05393b33b4018fa38b69eba8f16ac3d60eec9f4d2abc127e".HexToByteArray(),
-                "3c92939e680b91b094242af80fce6f217a34197a69d35edaf616cb0c3da4265b".HexToByteArray(),
-                28);
-
-            VerifySignatureAndPrintResult(messageHash, publicKey, invalidSignature);
+            VerifySignatureAndPrintResult(publicKey, inputSignature);
         }
 
-        private static void VerifySignatureAndPrintResult(byte[] messageHash, EthECKey publicKey, EthECDSASignature signature)
+        private static void VerifySignatureAndPrintResult(EthECKey publicKey, EthereumSignature signature)
         {
-            bool valid = publicKey.Verify(messageHash, signature);
+            bool valid = publicKey.GetPublicAddress() == signature.Address;
             Console.WriteLine("{0}", valid ? "valid" : "invalid");
         }
     }
