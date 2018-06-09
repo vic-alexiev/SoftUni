@@ -1,9 +1,12 @@
-﻿using Org.BouncyCastle.Crypto;
+﻿using Nethereum.Hex.HexConvertors.Extensions;
+using Nethereum.Signer;
+using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Crypto.Modes;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
+using System;
 using System.Security.Cryptography;
 
 namespace Common
@@ -56,6 +59,15 @@ namespace Common
                 iv ?? GetRandomBytes(cipher.GetBlockSize())));
             byte[] result = cipher.DoFinal(message);
             return result;
+        }
+
+        public static string ToString(EthECDSASignature signature)
+        {
+            byte[] result = new byte[65];
+            byte[] rands = signature.To64ByteArray();
+            Array.Copy(rands, result, rands.Length);
+            result[result.Length - 1] = (byte)EthECKey.GetRecIdFromV(signature.V);
+            return result.ToHex(true);
         }
     }
 }

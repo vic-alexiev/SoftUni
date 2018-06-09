@@ -1,17 +1,28 @@
-﻿using Nethereum.Signer;
+﻿using Common;
+using Nethereum.Hex.HexConvertors.Extensions;
+using Nethereum.Signer;
+using Nethereum.Util;
+using Newtonsoft.Json;
 using System;
+using System.IO;
 
 namespace EthereumSignatureToAddress
 {
-    internal class Program
+    internal class EthereumAddressResolver
     {
-        private const int EthereumAddressLength = 20;
-
         private static void Main(string[] args)
         {
-            //EthECKey privateKey = EthECKey.GenerateKey();
-            EthECKey privateKey = new EthECKey("97ddae0f3a25b92268175400149d65d6887b9cefaf28ea2c078e05cdc15a3c0a");
-            Console.WriteLine("Public address: {0}", privateKey.GetPublicAddress());
+            string input = File.ReadAllText("../../Input.json");
+            EthereumSignature inputSignature = JsonConvert.DeserializeObject<EthereumSignature>(input);
+            byte[] messageHash = inputSignature.Hash.HexToByteArray();
+            int recId = inputSignature.V.HexToByteArray()[0];
+
+            EthECDSASignature signature = EthECDSASignatureFactory.FromComponents(
+                inputSignature.R.HexToByteArray(),
+                inputSignature.S.HexToByteArray());
+
+            EthECKey publicKey = EthECKey.RecoverFromSignature(signature, recId, messageHash);
+            Console.WriteLine("Public address: {0}", publicKey.GetPublicAddress());
         }
     }
 }
