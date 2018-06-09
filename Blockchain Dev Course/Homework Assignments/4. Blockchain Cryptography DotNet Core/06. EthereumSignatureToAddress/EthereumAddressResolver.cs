@@ -10,7 +10,7 @@ namespace EthereumSignatureToAddress
     {
         private static void Main(string[] args)
         {
-            string input = File.ReadAllText("../../Input.json");
+            string input = File.ReadAllText("../../../Input.json");
             EthereumSignature inputSignature = JsonConvert.DeserializeObject<EthereumSignature>(input);
             byte[] messageHash = inputSignature.Hash.HexToByteArray();
             int recId = inputSignature.V.HexToByteArray()[0];

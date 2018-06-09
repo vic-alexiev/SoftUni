@@ -51,7 +51,7 @@ namespace SymmetricEncryptionAndDecryption
                 iv);
 
             string hmacHashedMessage =
-                HashUtils.ComputeHmac("HMACSHA256", message, hmacKey).ToHex();
+                HashUtils.ComputeHmac(message, hmacKey, 256).ToHex();
 
             string outputJson = GetEncryptionResultJson(
                 scryptSalt,
@@ -63,7 +63,7 @@ namespace SymmetricEncryptionAndDecryption
                 twofishEncryptedMessage,
                 hmacHashedMessage);
 
-            File.WriteAllText("../../Output.json", outputJson);
+            File.WriteAllText("../../../Output.json", outputJson);
             Console.WriteLine(outputJson);
 
             byte[] twofishDecryptedMessage = EncryptionUtils.BlockCipherProcessMessage(

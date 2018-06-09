@@ -3,6 +3,9 @@ using NBitcoin.DataEncoders;
 using Nethereum.Hex.HexConvertors.Extensions;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Digests;
+using Org.BouncyCastle.Crypto.Macs;
+using Org.BouncyCastle.Crypto.Parameters;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -66,10 +69,11 @@ namespace Common
 
         public static byte[] ComputeRIPEMD160(byte[] data)
         {
-            using (RIPEMD160Managed ripemd160 = new RIPEMD160Managed())
-            {
-                return ripemd160.ComputeHash(data);
-            }
+            IDigest digest = new RipeMD160Digest();
+            byte[] buffer = new byte[digest.GetDigestSize()];
+            digest.BlockUpdate(data, 0, data.Length);
+            digest.DoFinal(buffer, 0);
+            return buffer;
         }
 
         public static byte[] ComputeSha256(byte[] data)
@@ -123,13 +127,29 @@ namespace Common
             return buffer;
         }
 
-        public static byte[] ComputeHmac(string algorithmName, byte[] data, byte[] key)
+        public static byte[] ComputeHmac(byte[] data, byte[] key, int bitLength)
         {
-            using (HMAC hmac = HMAC.Create(algorithmName))
+            IDigest digest;
+            if (bitLength == 256)
             {
-                hmac.Key = key;
-                return hmac.ComputeHash(data);
+                digest = new Sha256Digest();
             }
+            else if (bitLength == 512)
+            {
+                digest = new Sha512Digest();
+            }
+            else
+            {
+                throw new ArgumentException("SHA digest restricted to one of [256, 512]");
+            }
+
+            HMac hmac = new HMac(digest);
+            hmac.Init(new KeyParameter(key));
+
+            byte[] buffer = new byte[hmac.GetMacSize()];
+            hmac.BlockUpdate(data, 0, data.Length);
+            hmac.DoFinal(buffer, 0);
+            return buffer;
         }
 
         private static string CreateBitcoinAddress(PubKey publicKey, Network network = null)

@@ -1,0 +1,33 @@
+# node
+node_modules
+
+# intellij
+.idea
+
+# OSX
+.DS_Store
+
+# artifacts
+.nyc_output
+build/*
+coverage/*
+buildInfo.json
+
+# rpms
+rpm/BUILD
+rpm/BUILDROOT
+rpm/RPMS
+rpm/SRPMS
+rpm/SOURCES/*.tar.gz
+.vagrant
+
+# logs
+*.log
+logs/*
+tests.html
+
+# code editors
+.vscode/
+
+# vim swap files
+*.swp

@@ -1,9 +1,7 @@
-﻿namespace EthereumSignatureToAddress
+﻿namespace EthereumSignatureCreator
 {
     internal class EthereumSignature
     {
-        public string Hash { get; set; }
-
         public string Signature { get; set; }
 
         public string V { get; set; }
