@@ -6,7 +6,7 @@ namespace SCryptDeriveKeyByPassword
 {
     internal class KeyGenerator
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //byte[] salt = EncryptionUtils.GetRandomBytes(256 / 8);
             byte[] salt = 

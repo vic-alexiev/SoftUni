@@ -5,7 +5,7 @@ namespace CalculateHmac
 {
     internal class HmacCalculator
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine(
                 "HMAC-SHA-512{0}{1}",

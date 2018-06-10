@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. PrivateKeyToBitcoinAddr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11. AsymmetricEncryptionAndDecryption", "11. AsymmetricEncryptionAndDecryption\11. AsymmetricEncryptionAndDecryption.csproj", "{E9E98EF8-7D67-4777-9495-17F09F1DEA7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. SignAndVerifyEthereumMessages", "12. SignAndVerifyEthereumMessages\12. SignAndVerifyEthereumMessages.csproj", "{2623AE03-1AF2-4B56-A9DD-C4D1588DAD73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{E9E98EF8-7D67-4777-9495-17F09F1DEA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9E98EF8-7D67-4777-9495-17F09F1DEA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9E98EF8-7D67-4777-9495-17F09F1DEA7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2623AE03-1AF2-4B56-A9DD-C4D1588DAD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2623AE03-1AF2-4B56-A9DD-C4D1588DAD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2623AE03-1AF2-4B56-A9DD-C4D1588DAD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2623AE03-1AF2-4B56-A9DD-C4D1588DAD73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PrivateKeyToBitcoinAddress")]
+[assembly: AssemblyTitle("SignAndVerifyEthereumMessages")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PrivateKeyToBitcoinAddress")]
+[assembly: AssemblyProduct("SignAndVerifyEthereumMessages")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4a4eeec0-76e2-4bc5-a44e-db5351193d51")]
+[assembly: Guid("2623ae03-1af2-4b56-a9dd-c4d1588dad73")]
 
 // Version information for an assembly consists of the following four values:
 //
