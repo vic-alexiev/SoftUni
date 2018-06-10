@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00. Common", "00. Common\00. Common.csproj", "{31FA5FC3-45F2-4D44-9292-B5C3A6AEEB13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00. Common", "00. Common\00. Common.csproj", "{31FA5FC3-45F2-4D44-9292-B5C3A6AEEB13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. CalculateHashes", "01. CalculateHashes\01. CalculateHashes.csproj", "{89C6FE6C-AB1E-4856-9B36-2D17825B9736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. CalculateHashes", "01. CalculateHashes\01. CalculateHashes.csproj", "{89C6FE6C-AB1E-4856-9B36-2D17825B9736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. CalculateHmac", "02. CalculateHmac\02. CalculateHmac.csproj", "{2D1DFD45-717B-4444-8931-8BA747BBB11D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02. CalculateHmac", "02. CalculateHmac\02. CalculateHmac.csproj", "{2D1DFD45-717B-4444-8931-8BA747BBB11D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. SCryptDeriveKeyByPassword", "03. SCryptDeriveKeyByPassword\03. SCryptDeriveKeyByPassword.csproj", "{189F8970-B313-479C-BBA4-D69CF5B35466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03. SCryptDeriveKeyByPassword", "03. SCryptDeriveKeyByPassword\03. SCryptDeriveKeyByPassword.csproj", "{189F8970-B313-479C-BBA4-D69CF5B35466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. SymmetricEncryptionAndDecryption", "04. SymmetricEncryptionAndDecryption\04. SymmetricEncryptionAndDecryption.csproj", "{E7D55B1D-2B12-42FD-8F1E-094AE77A7C28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04. SymmetricEncryptionAndDecryption", "04. SymmetricEncryptionAndDecryption\04. SymmetricEncryptionAndDecryption.csproj", "{E7D55B1D-2B12-42FD-8F1E-094AE77A7C28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. EthereumSignatureCreator", "05. EthereumSignatureCreator\05. EthereumSignatureCreator.csproj", "{8249FCFE-6C93-4D17-B293-45673B274935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05. EthereumSignatureCreator", "05. EthereumSignatureCreator\05. EthereumSignatureCreator.csproj", "{8249FCFE-6C93-4D17-B293-45673B274935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. EthereumSignatureToAddress", "06. EthereumSignatureToAddress\06. EthereumSignatureToAddress.csproj", "{F651ECD8-11C9-43ED-BEAC-CBD228B57F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06. EthereumSignatureToAddress", "06. EthereumSignatureToAddress\06. EthereumSignatureToAddress.csproj", "{F651ECD8-11C9-43ED-BEAC-CBD228B57F00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07. EthereumSignatureVerifier", "07. EthereumSignatureVerifier\07. EthereumSignatureVerifier.csproj", "{6860D725-B864-4EAA-800B-CBDB571278BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07. EthereumSignatureVerifier", "07. EthereumSignatureVerifier\07. EthereumSignatureVerifier.csproj", "{6860D725-B864-4EAA-800B-CBDB571278BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08. BitcoinAddressGenerator", "08. BitcoinAddressGenerator\08. BitcoinAddressGenerator.csproj", "{967C7192-B5B6-4CC0-B207-483FB6B0344D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08. BitcoinAddressGenerator", "08. BitcoinAddressGenerator\08. BitcoinAddressGenerator.csproj", "{967C7192-B5B6-4CC0-B207-483FB6B0344D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. PrivateKeyToBitcoinAddress", "10. PrivateKeyToBitcoinAddress\10. PrivateKeyToBitcoinAddress.csproj", "{4B9A6D36-11A2-484D-A37B-3CFBDE7EC8D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10. PrivateKeyToBitcoinAddress", "10. PrivateKeyToBitcoinAddress\10. PrivateKeyToBitcoinAddress.csproj", "{4B9A6D36-11A2-484D-A37B-3CFBDE7EC8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11. AsymmetricEncryptionAndDecryption", "11. AsymmetricEncryptionAndDecryption\11. AsymmetricEncryptionAndDecryption.csproj", "{62CBBAD7-DA07-4EC5-A5E0-EC023286B4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11. AsymmetricEncryptionAndDecryption", "11. AsymmetricEncryptionAndDecryption\11. AsymmetricEncryptionAndDecryption.csproj", "{62CBBAD7-DA07-4EC5-A5E0-EC023286B4B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. BitcoinAddressGeneratorJS", "09. BitcoinAddressGeneratorJS", "{F539D963-F328-41E4-845F-48488BE49DD8}"
 	ProjectSection(SolutionItems) = preProject
@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. BitcoinAddressGenerator
 		09. BitcoinAddressGeneratorJS\package-lock.json = 09. BitcoinAddressGeneratorJS\package-lock.json
 		09. BitcoinAddressGeneratorJS\package.json = 09. BitcoinAddressGeneratorJS\package.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12. SignAndVerifyEthereumMessages", "12. SignAndVerifyEthereumMessages\12. SignAndVerifyEthereumMessages.csproj", "{18742FDD-DCB7-434C-91C2-90452AF384F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{62CBBAD7-DA07-4EC5-A5E0-EC023286B4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62CBBAD7-DA07-4EC5-A5E0-EC023286B4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62CBBAD7-DA07-4EC5-A5E0-EC023286B4B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18742FDD-DCB7-434C-91C2-90452AF384F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18742FDD-DCB7-434C-91C2-90452AF384F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18742FDD-DCB7-434C-91C2-90452AF384F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18742FDD-DCB7-434C-91C2-90452AF384F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
