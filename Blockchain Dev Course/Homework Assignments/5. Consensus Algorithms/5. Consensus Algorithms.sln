@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00. Common", "00. Common\00. Common.csproj", "{7C81B3AC-6731-4FAA-B30B-A1B62355A991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. GeneratePrivateKeyAndAddress", "01. GeneratePrivateKeyAndAddress\01. GeneratePrivateKeyAndAddress.csproj", "{C513EEED-8017-4DFA-AE01-277F156875A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01. GeneratePrivateKeyAndAddress", "01. GeneratePrivateKeyAndAddress\01. GeneratePrivateKeyAndAddress.csproj", "{C513EEED-8017-4DFA-AE01-277F156875A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. SignAndVerifyTransaction", "02. SignAndVerifyTransaction\02. SignAndVerifyTransaction.csproj", "{B2E6CE32-0686-435E-A6EA-DCB2918D040D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C513EEED-8017-4DFA-AE01-277F156875A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C513EEED-8017-4DFA-AE01-277F156875A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C513EEED-8017-4DFA-AE01-277F156875A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E6CE32-0686-435E-A6EA-DCB2918D040D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E6CE32-0686-435E-A6EA-DCB2918D040D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E6CE32-0686-435E-A6EA-DCB2918D040D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E6CE32-0686-435E-A6EA-DCB2918D040D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

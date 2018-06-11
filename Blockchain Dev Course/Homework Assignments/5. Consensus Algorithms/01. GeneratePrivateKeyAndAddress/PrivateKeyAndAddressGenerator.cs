@@ -3,7 +3,6 @@ using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.Signer;
 using Nethereum.Signer.Crypto;
 using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Math;
 using System;
 
 namespace GeneratePrivateKeyAndAddress
@@ -27,13 +26,8 @@ namespace GeneratePrivateKeyAndAddress
             string publicKeyCompressed = HashUtils.ToHexCompressed(publicKeyParams.Q);
             Console.WriteLine("Public key compressed (65 hex digits):\r\n" + publicKeyCompressed);
 
-            byte[] ripemd160 = HashUtils.ComputeRIPEMD160(Utils.GetBytes(publicKeyCompressed));
-            Console.WriteLine("Public address (40 hex digits):\r\n" + ripemd160.ToHex());
-        }
-
-        private static bool IsEven(BigInteger value)
-        {
-            return value.Remainder(BigInteger.Two) == BigInteger.Zero;
+            byte[] publicAddress = HashUtils.ComputeRIPEMD160(Utils.GetBytes(publicKeyCompressed));
+            Console.WriteLine("Public address (40 hex digits):\r\n" + publicAddress.ToHex());
         }
     }
 }

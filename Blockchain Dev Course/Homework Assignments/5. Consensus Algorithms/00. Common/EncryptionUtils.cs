@@ -1,27 +1,42 @@
 ﻿using Nethereum.Hex.HexConvertors.Extensions;
 using Nethereum.KeyStore.Crypto;
 using Nethereum.Signer;
+using Nethereum.Signer.Crypto;
+using Org.BouncyCastle.Asn1.Sec;
+using Org.BouncyCastle.Asn1.X9;
 using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Crypto.Modes;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Crypto.Signers;
 using Org.BouncyCastle.Math;
+using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Security;
 using System;
-using System.Security.Cryptography;
 
 namespace Common
 {
     public static class EncryptionUtils
     {
-        private static RNGCryptoServiceProvider _rng = new RNGCryptoServiceProvider();
+        private static readonly SecureRandom RandomGenerator = new SecureRandom();
+        private static readonly X9ECParameters Secp256k1;
+        private static readonly ECDomainParameters Secp256k1DomainParameters;
+
+        static EncryptionUtils()
+        {
+            Secp256k1 = SecNamedCurves.GetByName("secp256k1");
+            Secp256k1DomainParameters =
+                new ECDomainParameters(Secp256k1.Curve, Secp256k1.G, Secp256k1.N, Secp256k1.H);
+        }
 
         public static byte[] GetRandomBytes(int size)
         {
+
             byte[] data = new byte[size];
-            _rng.GetBytes(data);
+            RandomGenerator.NextBytes(data, 0, size);
             return data;
         }
 
@@ -119,6 +134,41 @@ namespace Common
             keyPairGenerator.Init(parameters);
 
             return keyPairGenerator.GenerateKeyPair();
+        }
+
+        public static ECPoint GetPublicKey(BigInteger privateKey)
+        {
+            var q = Secp256k1.G.Multiply(privateKey);
+            return q.Normalize();
+        }
+
+        public static ECPublicKeyParameters GetPublicKeyParameters(string privateKey)
+        {
+            BigInteger d = new BigInteger(privateKey, 16);
+            var q = Secp256k1.G.Multiply(d);
+
+            return new ECPublicKeyParameters(q, Secp256k1DomainParameters);
+        }
+
+        public static ECDSASignature Sign(byte[] data, BigInteger privateKey)
+        {
+            ECPrivateKeyParameters parameters =
+                new ECPrivateKeyParameters(privateKey, Secp256k1DomainParameters);
+            IDsaKCalculator kCalculator = new HMacDsaKCalculator(new Sha256Digest());
+            IDsa signer = new ECDsaSigner(kCalculator);
+            signer.Init(true, parameters);
+            return new ECDSASignature(signer.GenerateSignature(data));
+        }
+
+        public static bool VerifySignature(
+            byte[] hash,
+            ECDSASignature signature,
+            ECPublicKeyParameters parameters)
+        {
+            IDsaKCalculator kCalculator = new HMacDsaKCalculator(new Sha256Digest());
+            var signer = new ECDsaSigner(kCalculator);
+            signer.Init(false, parameters);
+            return signer.VerifySignature(hash, signature.R, signature.S);
         }
 
         public static string ToString(EthECDSASignature signature)

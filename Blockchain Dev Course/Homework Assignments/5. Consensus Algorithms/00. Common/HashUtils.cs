@@ -159,7 +159,13 @@ namespace Common
         public static string ToHexCompressed(ECPoint point)
         {
             BigInteger yCoord = point.YCoord.ToBigInteger();
-            return point.XCoord.ToString() + Convert.ToInt32(yCoord.TestBit(0));
+            return point.XCoord.ToString() + Convert.ToInt32(IsOdd(yCoord));
+        }
+
+        private static bool IsOdd(BigInteger value)
+        {
+            BigInteger remainder = value.Remainder(BigInteger.Two);
+            return remainder.CompareTo(BigInteger.One) == 0;
         }
 
         private static string CreateBitcoinAddress(PubKey publicKey, Network network = null)
