@@ -1,0 +1,7 @@
+{
+  "name": "ethereum-hd-wallets-demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "ethers": "^3.0.21"
+  }
+}
