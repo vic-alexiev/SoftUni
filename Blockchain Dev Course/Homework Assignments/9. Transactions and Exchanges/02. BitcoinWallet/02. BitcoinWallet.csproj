@@ -13,4 +13,8 @@
     <PackageReference Include="QBitNinja.Client" Version="1.0.3.47" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Wallets\" />
+  </ItemGroup>
+
 </Project>
