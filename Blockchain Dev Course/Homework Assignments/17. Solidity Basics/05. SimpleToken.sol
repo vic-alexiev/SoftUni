@@ -14,7 +14,7 @@ contract SimpleToken {
         _balanceOf[to] += value;
     }
 
-    function getBalance(address owner) public view returns(uint256) {
-        return _balanceOf[owner];
+    function getBalance() public view returns(uint256) {
+        return _balanceOf[msg.sender];
     }
 }
