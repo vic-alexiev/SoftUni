@@ -6,14 +6,14 @@ contract Crowdsale {
         uint256 value
     );
 
-    event Withdrawal(
+    event Transfer(
         address indexed owner,
         uint256 value
     );
 
-    event Closure(
+    event Withdrawal(
         address indexed owner,
-        uint256 remainingBalance
+        uint256 balance
     );
 
     address private _owner;
@@ -28,22 +28,23 @@ contract Crowdsale {
     }
 
     function deposit() public payable {
-        require(msg.value > 0);
+        require(address(this).balance + msg.value > address(this).balance, "Balance overflow.");
         emit Deposit(msg.sender, msg.value);
     }
 
-    function withdraw() public ownerOnly {
-        uint256 balanceBefore = address(this).balance;
-        msg.sender.transfer(address(this).balance);
-        emit Withdrawal(msg.sender, balanceBefore);
+    function transfer(address to, uint256 amount) public ownerOnly {
+        require(amount <= address(this).balance, "Insufficient funds.");
+        require(msg.sender != to, "Sender and recipient must be different.");
+        to.transfer(amount);
+        emit Transfer(msg.sender, amount);
     }
 
     function getBalance() public ownerOnly view returns (uint256) {
         return address(this).balance;
     }
 
-    function close() public ownerOnly {
-        emit Closure(msg.sender, address(this).balance);
+    function destroyAndWithdraw() public ownerOnly {
+        emit Withdrawal(msg.sender, address(this).balance);
         selfdestruct(_owner);
     }
 }
