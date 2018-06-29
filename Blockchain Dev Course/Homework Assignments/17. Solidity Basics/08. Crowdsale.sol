@@ -28,7 +28,7 @@ contract Crowdsale {
     }
 
     function deposit() public payable {
-        require(address(this).balance + msg.value > address(this).balance, "Balance overflow.");
+        require(address(this).balance + msg.value >= address(this).balance, "Balance overflow.");
         emit Deposit(msg.sender, msg.value);
     }
 
