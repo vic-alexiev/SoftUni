@@ -26,8 +26,8 @@ contract Bank {
     }
 
     function deposit() public payable returns(uint256) {
-        require(_balanceOf[msg.sender] + msg.value > _balanceOf[msg.sender], "Balance overflow.");
-        
+        require(_balanceOf[msg.sender] + msg.value >= _balanceOf[msg.sender], "Balance overflow.");
+
         uint256 amount = msg.value;
         _balanceOf[msg.sender] += amount;
         emit Deposit(msg.sender, amount, _balanceOf[msg.sender]);
