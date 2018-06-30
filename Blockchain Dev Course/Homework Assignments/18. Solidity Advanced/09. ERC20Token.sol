@@ -1,42 +1,47 @@
 pragma solidity ^0.4.23;
 
-// Source:
+// Sources:
 // https://hashnode.com/post/how-to-build-your-own-ethereum-based-erc20-token-and-launch-an-ico-in-next-20-minutes-cjbcpwzec01c93awtbij90uzn
-contract Token {
+// https://ethereum.org/token
+interface Token {
 
     /// @return total amount of tokens
-    function totalSupply() public view returns (uint256 supply) {}
+    function totalSupply() external view returns (uint256 supply);
 
     /// @param owner The address from which the balance will be retrieved
     /// @return The balance
-    function balanceOf(address owner) public view returns (uint256 balance) {}
+    function balanceOf(address owner) external view returns (uint256 balance);
 
     /// @notice send `value` token to `to` from `msg.sender`
     /// @param to The address of the recipient
     /// @param value The amount of token to be transferred
     /// @return Whether the transfer was successful or not
-    function transfer(address to, uint256 value) public returns (bool success) {}
+    function transfer(address to, uint256 value) external returns (bool success);
 
     /// @notice send `value` token to `to` from `from` on the condition it is approved by `from`
     /// @param from The address of the sender
     /// @param to The address of the recipient
     /// @param value The amount of token to be transferred
     /// @return Whether the transfer was successful or not
-    function transferFrom(address from, address to, uint256 value) public returns (bool success) {}
+    function transferFrom(address from, address to, uint256 value) external returns (bool success);
 
     /// @notice `msg.sender` approves `spender` to spend `value` tokens
     /// @param spender The address of the account able to transfer the tokens
     /// @param value The amount of wei to be approved for transfer
     /// @return Whether the approval was successful or not
-    function approve(address spender, uint256 value) public returns (bool success) {}
+    function approve(address spender, uint256 value) external returns (bool success);
 
     /// @param owner The address of the account owning tokens
     /// @param spender The address of the account able to transfer the tokens
     /// @return Amount of remaining tokens allowed to spend
-    function allowance(address owner, address spender) public view returns (uint256 remaining) {}
+    function allowance(address owner, address spender) external view returns (uint256 remaining);
 
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+interface TokenRecipient {
+    function receiveApproval(address from, uint256 value, address token, bytes extraData) external;
 }
 
 contract StandardToken is Token {
@@ -53,13 +58,13 @@ contract StandardToken is Token {
             balances[to] += value;
             emit Transfer(msg.sender, to, value);
             return true;
-        } else { 
-            return false; 
+        } else {
+            return false;
         }
     }
 
     function transferFrom(address from, address to, uint256 value) public returns (bool success) {
-        // same as above. Replace this line with the following if you want to protect against 
+        // same as above. Replace this line with the following if you want to protect against
         // wrapping uints.
         // if (balances[from] >= value &&
         //     allowed[msg.sender][from] >= value &&
@@ -89,7 +94,7 @@ contract StandardToken is Token {
         return allowed[owner][spender];
     }
 
-    uint256 public totalSupply;
+    uint256 internal supply;
     mapping (address => uint256) internal balances; // token balances
     mapping (address => mapping (address => uint256)) internal allowed;
 }
@@ -113,14 +118,13 @@ contract CentaurCoin is StandardToken {
                                           // We'll store the total ETH raised via our ICO here.
     address public fundsWallet;           // Where should the raised ETH go?
 
-
     constructor() public {
         fundsWallet = msg.sender;                                    // The owner of the contract gets ETH
         balances[fundsWallet] = 1000000000000000000000;              // Give the creator all initial tokens.
                                                                      // This is set to 1000 for example.
                                                                      // If you want your initial tokens to be X and your decimal is 5, 
                                                                      // set this value to X * 100000.
-        totalSupply = 1000000000000000000000;                        // Update total supply (1000 for example)
+        supply = 1000000000000000000000;                             // Update total supply (1000 for example)
         name = "CentaurCoin";                                        // Set the name for display purposes
         decimals = 18;                                               // Amount of decimals for display purposes
         symbol = "CNTR";                                             // Set the symbol for display purposes
@@ -143,18 +147,20 @@ contract CentaurCoin is StandardToken {
         fundsWallet.transfer(msg.value);
     }
 
+    function totalSupply() public view returns (uint256 supply){
+        return supply;
+    }
+
     /// Approves and then calls the receiving contract
     function approveAndCall(address spender, uint256 value, bytes extraData) public returns (bool success) {
-        allowed[msg.sender][spender] = value;
-        emit Approval(msg.sender, spender, value);
 
-        // Call the receiveApproval function on the contract you want to be notified. 
-        // This crafts the function signature manually so one doesn't have to include a contract in here just for this.
-        // `receiveApproval(address from, uint256 value, address tokenContract, bytes extraData)`
-        // It is assumed that when one does this the call *should* succeed, otherwise one would use vanilla approve instead.
-        // if(!spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData)) { 
-        //     revert(); 
-        // }
-        return true;
+        // Call the receiveApproval function on the contract you want to be notified.
+        TokenRecipient recipient = TokenRecipient(spender);
+        if (approve(spender, value)) {
+            recipient.receiveApproval(msg.sender, value, this, extraData);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
