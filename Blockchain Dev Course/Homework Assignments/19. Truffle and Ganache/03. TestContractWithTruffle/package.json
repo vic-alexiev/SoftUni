@@ -1,0 +1,16 @@
+{
+  "name": "test-contract-with-truffle",
+  "version": "1.0.0",
+  "devDependencies": {
+    "solidity-coverage": "^0.5.4"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "test:run:server": "testrpc-sc --port 8555 -l 0xfffffffffff -g 0x01",
+    "test:coverage": "solidity-coverage"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "1.10.0",
+    "zeppelin-solidity": "^1.10.0"
+  }
+}
