@@ -28,14 +28,6 @@ local.properties
 # PDT-specific
 .buildpath
 
-#####################
-## Visual Studio Code
-#####################
-.vscode
-node_modules
-npm-debug.log
-.idea
-
 #################
 ## Visual Studio
 #################
@@ -221,3 +213,38 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# node
+node_modules
+npm-debug.log
+
+# intellij
+.idea
+
+# OSX
+.DS_Store
+
+# artifacts
+.nyc_output
+build/*
+coverage/*
+buildInfo.json
+
+# rpms
+rpm/BUILD
+rpm/BUILDROOT
+rpm/RPMS
+rpm/SRPMS
+rpm/SOURCES/*.tar.gz
+.vagrant
+
+# logs
+*.log
+logs/*
+tests.html
+
+# code editors
+.vscode/
+
+# vim swap files
+*.swp
