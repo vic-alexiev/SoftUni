@@ -19,6 +19,7 @@ contract PetSanctuary {
         Gender adopterGender;
         string animalKind;
     }
+
     address private _owner;
     uint256 private _timeToReturn;
     mapping(string => bool) private _isAllowedAnimal;
